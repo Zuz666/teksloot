@@ -255,18 +255,19 @@ end
 local function ParseRollChoice(msg)
 	for i,v in pairs(ns.rollpairs) do
 		local _, _, playername, itemname = string.find(msg, i)
-		if playername and itemname and playername ~= "Everyone" then return playername, itemname, v end
+		if playername and itemname and playername ~= "Everyone" then
+			if GetLocale() == "ruRU" and rolltype ~= "pass" then
+				return itemname, playername, v 
+			else
+				return playername, itemname, v
+			end
+		end
 	end
 end
 
 
 local function CHAT_MSG_LOOT(msg)
 	local playername, itemname, rolltype = ParseRollChoice(msg)
-	if GetLocale() == "ruRU" and rolltype ~= "pass" then
-		local _ = itemname
-		itemname = playername
-		playername = _
-	end
 	if playername and itemname and rolltype then
 		for _,f in ipairs(frames) do
 			if f.rollid and f.button.link == itemname and not f.rolls[playername] then
