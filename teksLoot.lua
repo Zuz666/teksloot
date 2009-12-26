@@ -262,7 +262,7 @@ end
 
 local function CHAT_MSG_LOOT(msg)
 	local playername, itemname, rolltype = ParseRollChoice(msg)
-	if GetLocale() == "ruRU" and rolltype == "pass" then
+	if GetLocale() == "ruRU" and rolltype ~= "pass" then
 		local _ = itemname
 		itemname = playername
 		playername = _
