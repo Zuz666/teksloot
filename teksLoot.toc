@@ -8,6 +8,9 @@
 ## X-Website: http://www.tekkub.net/
 ## X-Email: tekkub-wow@googlegroups.com
 ## X-Category: Interface Enhancements
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /teksloot
+## X-LoadOn-Group: true
 
 ## SavedVariables: teksLootDB
 
