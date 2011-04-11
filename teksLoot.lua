@@ -255,11 +255,13 @@ end
 local function ParseRollChoice(msg)
 	for i,v in pairs(ns.rollpairs) do
 		local _, _, playername, itemname = string.find(msg, i)
-		if playername and itemname and playername ~= "Everyone" then
-			if GetLocale() == "ruRU" and rolltype ~= "pass" then
+		if playername and itemname then
+			if GetLocale() == "ruRU" and v ~= "pass" then
 				return itemname, playername, v 
 			else
-				return playername, itemname, v
+				if playername ~= "Everyone" then
+					return playername, itemname, v
+				end
 			end
 		end
 	end
